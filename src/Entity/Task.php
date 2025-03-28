@@ -24,11 +24,11 @@ class Task
     #[Assert\NotBlank("", "Le contenu ne peut pas être vide.")]
     private ?string $content = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    #[ORM\Column(nullable:true, type:'datetime')]
+    private $createdAt = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $expiredAt = null;
+    #[ORM\Column(nullable:true, type:'datetime')]
+    private $expiredAt = null;
 
     #[ORM\Column(nullable: true)]
     private ?bool $status = null;
