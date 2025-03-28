@@ -8,6 +8,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType; 
 
 class TaskType extends AbstractType
 {
@@ -15,32 +17,32 @@ class TaskType extends AbstractType
     {
         $builder
             ->add('title', TextType::class,[
-                'label' => 'Titre'
-            ,
+                'label' => 'Titre',
                 'attr' =>[
                     'placeholder' => 'saisir le titre'   
-                ]
+                ],
+                'required'=>true
             ])
-            ->add('content', TextType::class,[
-                'label' => 'Contenu'
-            ,
+            ->add('content', TextareaType::class,[
+                'label' => 'Contenu',
                 'attr' =>[
                     'placeholder' => 'saisir le contenu'   
-                ]
+                ],
+                'required'=>true
             ])
-            ->add('createdAt', TextType::class,[
-                'label' => 'Date de création'
-            ,
+            ->add('createdAt', DateType::class,[
+                'label' => 'Date de création',
                 'attr' =>[
                     'placeholder' => 'saisir la date de création'   
-                ]
+                ],
+                'required'=>true
             ])
             ->add('expiredAt', TextType::class,[
-                'label' => 'Date d\'expiration'
-            ,
+                'label' => 'Date d\'expiration',
                 'attr' =>[
                     'placeholder' => 'saisir la date d\'expiration'   
-                ]
+                ],
+                'required'=>true
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Ajouter'

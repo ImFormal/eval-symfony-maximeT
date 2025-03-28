@@ -17,9 +17,7 @@ class TaskService{
 
     public function addTask(Task $task){
 
-        if($task->getTitle() != "" && $task->getContent() != ""){
-
-            $task->setCreatedAt(now());
+        if($task->getTitle() != "" && $task->getContent() != "" && $task->getCreatedAt() && $task->getExpiredAt()){
             $this->em->persist($task);
             $this->em->flush();
         }
