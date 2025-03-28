@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\TaskRepository;
+use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -21,7 +22,7 @@ class Task
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Assert\NotBlank("", "Le contenu ne peut pas être vide.")]
+    #[Assert\NotBlank(message: "Le contenu ne peut pas être vide.")]
     private ?string $content = null;
 
     #[ORM\Column(nullable:true, type:'datetime')]
@@ -62,24 +63,24 @@ class Task
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setCreatedAt(DateTime $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getExpiredAt(): ?\DateTimeImmutable
+    public function getExpiredAt(): DateTime
     {
         return $this->expiredAt;
     }
 
-    public function setExpiredAt(\DateTimeImmutable $expiredAt): static
+    public function setExpiredAt(DateTime $expiredAt): static
     {
         $this->expiredAt = $expiredAt;
 

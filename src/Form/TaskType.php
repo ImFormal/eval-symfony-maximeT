@@ -37,7 +37,7 @@ class TaskType extends AbstractType
                 ],
                 'required'=>true
             ])
-            ->add('expiredAt', TextType::class,[
+            ->add('expiredAt', DateType::class,[
                 'label' => 'Date d\'expiration',
                 'attr' =>[
                     'placeholder' => 'saisir la date d\'expiration'   

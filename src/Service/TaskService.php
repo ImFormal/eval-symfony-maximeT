@@ -6,7 +6,6 @@ use App\Entity\Task;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
-use function Symfony\Component\Clock\now;
 
 class TaskService{
 
@@ -18,6 +17,7 @@ class TaskService{
     public function addTask(Task $task){
 
         if($task->getTitle() != "" && $task->getContent() != "" && $task->getCreatedAt() && $task->getExpiredAt()){
+            $task->setStatus(false);
             $this->em->persist($task);
             $this->em->flush();
         }
